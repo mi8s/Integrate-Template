@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\transactionDetail;
+use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
 
 class TransactionDetailController extends Controller
@@ -12,7 +12,7 @@ class TransactionDetailController extends Controller
      */
     public function index()
     {
-        //
+        return view('historyTransaction');
     }
 
     /**
@@ -34,7 +34,7 @@ class TransactionDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(transactionDetail $transactionDetail)
+    public function show(TransactionDetail $transactionDetail)
     {
         //
     }
@@ -42,7 +42,7 @@ class TransactionDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(transactionDetail $transactionDetail)
+    public function edit(TransactionDetail $transactionDetail)
     {
         //
     }
@@ -50,7 +50,7 @@ class TransactionDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, transactionDetail $transactionDetail)
+    public function update(Request $request, TransactionDetail $transactionDetail)
     {
         //
     }
@@ -58,7 +58,7 @@ class TransactionDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(transactionDetail $transactionDetail)
+    public function destroy(TransactionDetail $transactionDetail)
     {
         //
     }
