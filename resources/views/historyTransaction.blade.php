@@ -5,7 +5,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold">Categories</h6>
-        <a href="{{ route('category.create') }}" class="btn btn-success btn-sm">New Item</a>
+        <a class="btn btn-success m-1">New Item</a>
     </div>
 
     <div class="card-body">
@@ -14,51 +14,27 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Project Name</th>
+                        <th>Transaction ID</th>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Subtotal</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Data 1</td>
-                        <td>
-                            <button class="btn btn-success btn-sm">Edit</button>
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Data 2</td>
-                        <td>
-                            <button class="btn btn-success btn-sm">Edit</button>
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Data 3</td>
-                        <td>
-                            <button class="btn btn-success btn-sm">Edit</button>
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Data 4</td>
-                        <td>
-                            <button class="btn btn-success btn-sm">Edit</button>
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Data 5</td>
-                        <td>
-                            <button class="btn btn-success btn-sm">Edit</button>
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                        </td>
-                    </tr>
+                    @forelse ($transactiondetails as $transactiondetail)
+                    <td>{{$transactiondetail -> id}}</td>
+                    <td>{{$transactiondetail -> transaction_id}}</td>
+                    <td>{{$transactiondetail -> item_id}}</td>
+                    <td>{{$transactiondetail -> qty}}</td>
+                    <td>{{$transactiondetail -> subtotal}}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm">Edit</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>  
+                </tr>
+                    @empty         
+                    @endforelse
                 </tbody>
             </table>
         </div>
