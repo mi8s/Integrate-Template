@@ -15,7 +15,7 @@
                     <tr>
                         <th>No.</th>
                         <th>User ID</th>
-                        <td>Date</td>
+                        <th>Date</th>
                         <th>Total</th>
                         <th>Pay Total</th>
                         <th>Action</th>

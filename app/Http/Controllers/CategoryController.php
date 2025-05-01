@@ -12,9 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-    $categories = Category::all(); // Pastikan use App\Models\Category; di atas
-
-    return view('category', compact('categories'));
+        $categories = Category::all(); // Pastikan use App\Models\Category; di atas
+        return view('category', compact('categories'));
     }
 
     /**
@@ -22,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -30,7 +29,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:20|min:3',
+        ],
+        [
+            'name.required' => 'Category name is required',
+            'name.string' => 'Category name must be a string',
+            'name.max' => 'Category name must not exceed 20 characters',
+            'name.min' => 'Category name must be at least 2 characters',
+        ]);
+
+        $message = [[
+            'required' => 'isi semua kolomnya ya teman',
+            'string' => 'kolom ini harus berupa string',
+            'max' => 'kolom ini tidak boleh lebih dari 20 karakter',
+            'min' => 'kolom ini tidak boleh kurang dari 2 karakter',
+        ]];
+      
+        Category::create([
+            'name' => $request->name
+        ]);
+        // return redirect()->back()->with('success', 'Category created successfully');
+        return redirect()->route('category.index')->with('success', 'Kategori sudah dibikin');
     }
 
     /**
@@ -62,6 +82,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        // $category = Category::find($category);
+        $category->delete();
+        return redirect()->route('category.index')->with('success', 'Category dihapus');
     }
 }
